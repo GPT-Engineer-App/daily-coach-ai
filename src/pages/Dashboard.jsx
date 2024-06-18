@@ -1,10 +1,10 @@
 import { Box, Heading, Text, VStack, IconButton, useToast, Progress, Flex, Table, Thead, Tbody, Tr, Th, Td, HStack, Spacer } from "@chakra-ui/react";
 import { FaMicrophone } from "react-icons/fa";
 import { useState } from "react";
-import { PolarArea } from 'react-chartjs-2';
-import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
+import { PolarArea, Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend, Heatmap } from 'chart.js';
+import { Chart } from 'react-chartjs-2';
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend, Heatmap);
 
 const Dashboard = () => {
   const [recording, setRecording] = useState(false);
@@ -62,6 +62,43 @@ const Dashboard = () => {
             return label;
           },
         },
+      },
+    },
+  };
+
+  const streakData = {
+    labels: Array.from({ length: 52 }, (_, i) => `Week ${i + 1}`),
+    datasets: [
+      {
+        label: 'Voice Clip Streak',
+        data: Array.from({ length: 52 * 7 }, () => Math.floor(Math.random() * 2)),
+        backgroundColor: function(context) {
+          const value = context.dataset.data[context.dataIndex];
+          return value ? 'rgba(0, 255, 0, 0.6)' : 'rgba(0, 0, 0, 0.1)';
+        },
+        borderColor: 'rgba(0, 0, 0, 0.1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const streakOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        display: false,
+      },
+      y: {
+        display: false,
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: false,
       },
     },
   };
@@ -129,6 +166,12 @@ const Dashboard = () => {
               </Tr>
             </Tbody>
           </Table>
+        </Box>
+        <Box>
+          <Text fontSize="lg" mb={2}>Voice Clip Streak</Text>
+          <Box bg="gray.100" p={4} borderRadius="md" height="200px">
+            <Chart type="heatmap" data={streakData} options={streakOptions} />
+          </Box>
         </Box>
         <Box textAlign="center">
           <Text fontSize="lg" mb={4}>Record your daily voice note</Text>

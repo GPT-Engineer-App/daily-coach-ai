@@ -1,10 +1,10 @@
 import { Box, Heading, Text, VStack, IconButton, useToast, Progress, Flex, Table, Thead, Tbody, Tr, Th, Td, HStack, Spacer } from "@chakra-ui/react";
 import { FaMicrophone } from "react-icons/fa";
 import { useState } from "react";
-import { PolarArea, Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 const Dashboard = () => {
   const [recording, setRecording] = useState(false);
@@ -125,7 +125,7 @@ const Dashboard = () => {
         <Box>
           <Text fontSize="lg" mb={2}>Contribution Activity</Text>
           <Box bg="gray.100" p={4} borderRadius="md">
-            <PolarArea data={data} options={options} />
+            <Chart type="polarArea" data={data} options={options} />
           </Box>
         </Box>
         <Box>

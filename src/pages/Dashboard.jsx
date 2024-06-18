@@ -1,8 +1,9 @@
 import { Box, Heading, Text, VStack, IconButton, useToast, Progress, Flex, Table, Thead, Tbody, Tr, Th, Td, HStack, Spacer } from "@chakra-ui/react";
 import { FaMicrophone } from "react-icons/fa";
 import { useState } from "react";
-import { PolarArea, Line } from 'react-chartjs-2';
+import { PolarArea } from 'react-chartjs-2';
 import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, Title, PointElement, LineElement } from 'chart.js';
+import HeatMap from '@uiw/react-heat-map';
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, Title, PointElement, LineElement);
 
@@ -66,52 +67,6 @@ const Dashboard = () => {
     },
   };
 
-  const streakData = {
-    labels: Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`),
-    datasets: [
-      {
-        label: 'Voice Clip Streak',
-        data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 2)),
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
-        fill: true,
-      },
-    ],
-  };
-
-  const streakOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      title: {
-        display: true,
-        text: 'Voice Clip Streak',
-      },
-    },
-    scales: {
-      x: {
-        display: true,
-        title: {
-          display: true,
-          text: 'Day',
-        },
-      },
-      y: {
-        display: true,
-        title: {
-          display: true,
-          text: 'Streak',
-        },
-        ticks: {
-          stepSize: 1,
-        },
-      },
-    },
-  };
-
   return (
     <Box p={4}>
       <Heading as="h1" size="xl" mb={6} textAlign="center">Dashboard</Heading>
@@ -140,7 +95,21 @@ const Dashboard = () => {
         <Box>
           <Text fontSize="lg" mb={2}>Voice Clip Streak</Text>
           <Box bg="gray.100" p={4} borderRadius="md">
-            <Line data={streakData} options={streakOptions} />
+            <HeatMap
+              value={[
+                { date: '2023-01-01', count: 2 },
+                { date: '2023-01-02', count: 1 },
+                { date: '2023-01-03', count: 4 },
+                { date: '2023-01-04', count: 3 },
+                { date: '2023-01-05', count: 5 },
+                // Add more mock data as needed
+              ]}
+              width={800}
+              rectSize={20}
+              legendCellSize={0}
+              startDate={new Date('2023/01/01')}
+              endDate={new Date('2023/12/31')}
+            />
           </Box>
         </Box>
         <Box>

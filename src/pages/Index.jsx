@@ -1,6 +1,7 @@
 import { Container, VStack, Heading, Text, Button, Box, Flex, IconButton, useToast } from "@chakra-ui/react";
 import { FaMicrophone, FaLightbulb } from "react-icons/fa";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [recording, setRecording] = useState(false);
@@ -40,6 +41,11 @@ const Index = () => {
               View Today's Summary
             </Button>
           </Flex>
+        </Box>
+        <Box width="100%" textAlign="center">
+          <Link to="/dashboard">
+            <Button colorScheme="teal" size="lg">Go to Dashboard</Button>
+          </Link>
         </Box>
       </VStack>
     </Container>

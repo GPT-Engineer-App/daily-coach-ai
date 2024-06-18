@@ -1,6 +1,10 @@
 import { Box, Heading, Text, VStack, IconButton, useToast, Progress, Flex, Table, Thead, Tbody, Tr, Th, Td, HStack, Spacer } from "@chakra-ui/react";
 import { FaMicrophone } from "react-icons/fa";
 import { useState } from "react";
+import { PolarArea } from 'react-chartjs-2';
+import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
+
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
   const [recording, setRecording] = useState(false);
@@ -14,6 +18,52 @@ const Dashboard = () => {
       duration: 2000,
       isClosable: true,
     });
+  };
+
+  const data = {
+    labels: ['Topic A', 'Topic B', 'Topic C', 'Topic D', 'Topic E'],
+    datasets: [
+      {
+        label: 'Voice Clips',
+        data: [11, 16, 7, 3, 14],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            let label = context.dataset.label || '';
+            if (label) {
+              label += ': ';
+            }
+            label += context.raw;
+            return label;
+          },
+        },
+      },
+    },
   };
 
   return (
@@ -38,7 +88,7 @@ const Dashboard = () => {
         <Box>
           <Text fontSize="lg" mb={2}>Contribution Activity</Text>
           <Box bg="gray.100" p={4} borderRadius="md">
-            <Text>Mocked Contribution Activity Chart</Text>
+            <PolarArea data={data} options={options} />
           </Box>
         </Box>
         <Box>

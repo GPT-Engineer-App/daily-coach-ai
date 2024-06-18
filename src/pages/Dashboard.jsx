@@ -1,10 +1,10 @@
 import { Box, Heading, Text, VStack, IconButton, useToast, Progress, Flex, Table, Thead, Tbody, Tr, Th, Td, HStack, Spacer } from "@chakra-ui/react";
 import { FaMicrophone } from "react-icons/fa";
 import { useState } from "react";
-import { PolarArea, Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend, Heatmap } from 'chart.js';
+import { PolarArea, Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend, Heatmap);
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 const Dashboard = () => {
   const [recording, setRecording] = useState(false);
@@ -170,7 +170,7 @@ const Dashboard = () => {
         <Box>
           <Text fontSize="lg" mb={2}>Voice Clip Streak</Text>
           <Box bg="gray.100" p={4} borderRadius="md" height="200px">
-            <Chart type="heatmap" data={streakData} options={streakOptions} />
+            <Chart type="bar" data={streakData} options={streakOptions} />
           </Box>
         </Box>
         <Box textAlign="center">

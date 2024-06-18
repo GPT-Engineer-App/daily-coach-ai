@@ -1,10 +1,10 @@
 import { Box, Heading, Text, VStack, IconButton, useToast, Progress, Flex, Table, Thead, Tbody, Tr, Th, Td, HStack, Spacer } from "@chakra-ui/react";
 import { FaMicrophone } from "react-icons/fa";
 import { useState } from "react";
-import { PolarArea } from 'react-chartjs-2';
-import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
+import { PolarArea, Line } from 'react-chartjs-2';
+import { Chart as ChartJS, RadialLinearScale, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, Title, PointElement, LineElement } from 'chart.js';
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, Title, PointElement, LineElement);
 
 const Dashboard = () => {
   const [recording, setRecording] = useState(false);
@@ -66,6 +66,52 @@ const Dashboard = () => {
     },
   };
 
+  const streakData = {
+    labels: Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`),
+    datasets: [
+      {
+        label: 'Voice Clip Streak',
+        data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 2)),
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+        fill: true,
+      },
+    ],
+  };
+
+  const streakOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        text: 'Voice Clip Streak',
+      },
+    },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Day',
+        },
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Streak',
+        },
+        ticks: {
+          stepSize: 1,
+        },
+      },
+    },
+  };
+
   return (
     <Box p={4}>
       <Heading as="h1" size="xl" mb={6} textAlign="center">Dashboard</Heading>
@@ -89,6 +135,12 @@ const Dashboard = () => {
           <Text fontSize="lg" mb={2}>Contribution Activity</Text>
           <Box bg="gray.100" p={4} borderRadius="md">
             <PolarArea data={data} options={options} />
+          </Box>
+        </Box>
+        <Box>
+          <Text fontSize="lg" mb={2}>Voice Clip Streak</Text>
+          <Box bg="gray.100" p={4} borderRadius="md">
+            <Line data={streakData} options={streakOptions} />
           </Box>
         </Box>
         <Box>

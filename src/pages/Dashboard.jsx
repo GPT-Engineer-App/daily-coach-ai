@@ -1,3 +1,4 @@
+```jsx
 import { Box, Heading, Text, VStack, IconButton, useToast, Progress, Flex, Table, Thead, Tbody, Tr, Th, Td, HStack, Spacer } from "@chakra-ui/react";
 import { FaMicrophone } from "react-icons/fa";
 import { useState } from "react";
@@ -76,96 +77,201 @@ const Dashboard = () => {
     { date: '2016/05/01', count: 5 },
     { date: '2016/05/02', count: 5 },
     { date: '2016/05/04', count: 11 },
-  ];
-
-  return (
-    <Box p={4}>
-      <Heading as="h1" size="xl" mb={6} textAlign="center">Dashboard</Heading>
-      <VStack spacing={8} align="stretch">
-        <Box>
-          <HStack>
-            <Box>
-              <Text fontSize="lg" mb={2}>Clips You've Recorded</Text>
-              <Progress value={32} colorScheme="pink" size="lg" />
-              <Text mt={2}>05 / 20</Text>
-            </Box>
-            <Spacer />
-            <Box>
-              <Text fontSize="lg" mb={2}>Clips You've Validated</Text>
-              <Progress value={54} colorScheme="green" size="lg" />
-              <Text mt={2}>12 / 20</Text>
-            </Box>
-          </HStack>
-        </Box>
-        <Box>
-          <Text fontSize="lg" mb={2}>Contribution Activity</Text>
-          <Box bg="gray.100" p={4} borderRadius="md">
-            <HStack spacing={4}>
-              <Box flex="1" width="100%" height="400px">
-                <PolarArea data={data} options={options} />
-              </Box>
-              <Box flex="1" width="100%" height="400px">
-                <HeatMap
-                  value={heatmapData}
-                  weekLabels={['', 'Mon', '', 'Wed', '', 'Fri', '']}
-                  startDate={new Date('2016/01/01')}
-                />
-              </Box>
-            </HStack>
-          </Box>
-        </Box>
-        <Box>
-          <Text fontSize="lg" mb={2}>Top Contributors</Text>
-          <Table variant="simple">
-            <Thead>
-              <Tr>
-                <Th>Rank</Th>
-                <Th>Name</Th>
-                <Th isNumeric>Clips</Th>
-                <Th isNumeric>Percentage</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>1</Td>
-                <Td>Bansilal Brata</Td>
-                <Td isNumeric>453</Td>
-                <Td isNumeric>1.78%</Td>
-              </Tr>
-              <Tr>
-                <Td>2</Td>
-                <Td>Thitiwat Shimma</Td>
-                <Td isNumeric>345</Td>
-                <Td isNumeric>1.71%</Td>
-              </Tr>
-              <Tr>
-                <Td>3</Td>
-                <Td>George Railean</Td>
-                <Td isNumeric>236</Td>
-                <Td isNumeric>1.43%</Td>
-              </Tr>
-              <Tr>
-                <Td>4</Td>
-                <Td>Hector Mariano</Td>
-                <Td isNumeric>212</Td>
-                <Td isNumeric>1.02%</Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </Box>
-        <Box textAlign="center">
-          <Text fontSize="lg" mb={4}>Record your daily voice note</Text>
-          <IconButton
-            aria-label="Record voice note"
-            icon={<FaMicrophone />}
-            size="lg"
-            colorScheme={recording ? "red" : "teal"}
-            onClick={handleRecord}
-          />
-        </Box>
-      </VStack>
-    </Box>
-  );
-};
-
-export default Dashboard;
+    { date: '2016/06/01', count: 8 },
+    { date: '2016/06/02', count: 15 },
+    { date: '2016/06/03', count: 12 },
+    { date: '2016/06/04', count: 7 },
+    { date: '2016/06/05', count: 9 },
+    { date: '2016/06/06', count: 14 },
+    { date: '2016/06/07', count: 6 },
+    { date: '2016/06/08', count: 10 },
+    { date: '2016/06/09', count: 13 },
+    { date: '2016/06/10', count: 4 },
+    { date: '2016/06/11', count: 11 },
+    { date: '2016/06/12', count: 3 },
+    { date: '2016/06/13', count: 16 },
+    { date: '2016/06/14', count: 5 },
+    { date: '2016/06/15', count: 18 },
+    { date: '2016/06/16', count: 2 },
+    { date: '2016/06/17', count: 20 },
+    { date: '2016/06/18', count: 1 },
+    { date: '2016/06/19', count: 17 },
+    { date: '2016/06/20', count: 19 },
+    { date: '2016/06/21', count: 3 },
+    { date: '2016/06/22', count: 8 },
+    { date: '2016/06/23', count: 12 },
+    { date: '2016/06/24', count: 7 },
+    { date: '2016/06/25', count: 9 },
+    { date: '2016/06/26', count: 14 },
+    { date: '2016/06/27', count: 6 },
+    { date: '2016/06/28', count: 10 },
+    { date: '2016/06/29', count: 13 },
+    { date: '2016/06/30', count: 4 },
+    { date: '2016/07/01', count: 11 },
+    { date: '2016/07/02', count: 3 },
+    { date: '2016/07/03', count: 16 },
+    { date: '2016/07/04', count: 5 },
+    { date: '2016/07/05', count: 18 },
+    { date: '2016/07/06', count: 2 },
+    { date: '2016/07/07', count: 20 },
+    { date: '2016/07/08', count: 1 },
+    { date: '2016/07/09', count: 17 },
+    { date: '2016/07/10', count: 19 },
+    { date: '2016/07/11', count: 3 },
+    { date: '2016/07/12', count: 8 },
+    { date: '2016/07/13', count: 12 },
+    { date: '2016/07/14', count: 7 },
+    { date: '2016/07/15', count: 9 },
+    { date: '2016/07/16', count: 14 },
+    { date: '2016/07/17', count: 6 },
+    { date: '2016/07/18', count: 10 },
+    { date: '2016/07/19', count: 13 },
+    { date: '2016/07/20', count: 4 },
+    { date: '2016/07/21', count: 11 },
+    { date: '2016/07/22', count: 3 },
+    { date: '2016/07/23', count: 16 },
+    { date: '2016/07/24', count: 5 },
+    { date: '2016/07/25', count: 18 },
+    { date: '2016/07/26', count: 2 },
+    { date: '2016/07/27', count: 20 },
+    { date: '2016/07/28', count: 1 },
+    { date: '2016/07/29', count: 17 },
+    { date: '2016/07/30', count: 19 },
+    { date: '2016/07/31', count: 3 },
+    { date: '2016/08/01', count: 8 },
+    { date: '2016/08/02', count: 12 },
+    { date: '2016/08/03', count: 7 },
+    { date: '2016/08/04', count: 9 },
+    { date: '2016/08/05', count: 14 },
+    { date: '2016/08/06', count: 6 },
+    { date: '2016/08/07', count: 10 },
+    { date: '2016/08/08', count: 13 },
+    { date: '2016/08/09', count: 4 },
+    { date: '2016/08/10', count: 11 },
+    { date: '2016/08/11', count: 3 },
+    { date: '2016/08/12', count: 16 },
+    { date: '2016/08/13', count: 5 },
+    { date: '2016/08/14', count: 18 },
+    { date: '2016/08/15', count: 2 },
+    { date: '2016/08/16', count: 20 },
+    { date: '2016/08/17', count: 1 },
+    { date: '2016/08/18', count: 17 },
+    { date: '2016/08/19', count: 19 },
+    { date: '2016/08/20', count: 3 },
+    { date: '2016/08/21', count: 8 },
+    { date: '2016/08/22', count: 12 },
+    { date: '2016/08/23', count: 7 },
+    { date: '2016/08/24', count: 9 },
+    { date: '2016/08/25', count: 14 },
+    { date: '2016/08/26', count: 6 },
+    { date: '2016/08/27', count: 10 },
+    { date: '2016/08/28', count: 13 },
+    { date: '2016/08/29', count: 4 },
+    { date: '2016/08/30', count: 11 },
+    { date: '2016/08/31', count: 3 },
+    { date: '2016/09/01', count: 16 },
+    { date: '2016/09/02', count: 5 },
+    { date: '2016/09/03', count: 18 },
+    { date: '2016/09/04', count: 2 },
+    { date: '2016/09/05', count: 20 },
+    { date: '2016/09/06', count: 1 },
+    { date: '2016/09/07', count: 17 },
+    { date: '2016/09/08', count: 19 },
+    { date: '2016/09/09', count: 3 },
+    { date: '2016/09/10', count: 8 },
+    { date: '2016/09/11', count: 12 },
+    { date: '2016/09/12', count: 7 },
+    { date: '2016/09/13', count: 9 },
+    { date: '2016/09/14', count: 14 },
+    { date: '2016/09/15', count: 6 },
+    { date: '2016/09/16', count: 10 },
+    { date: '2016/09/17', count: 13 },
+    { date: '2016/09/18', count: 4 },
+    { date: '2016/09/19', count: 11 },
+    { date: '2016/09/20', count: 3 },
+    { date: '2016/09/21', count: 16 },
+    { date: '2016/09/22', count: 5 },
+    { date: '2016/09/23', count: 18 },
+    { date: '2016/09/24', count: 2 },
+    { date: '2016/09/25', count: 20 },
+    { date: '2016/09/26', count: 1 },
+    { date: '2016/09/27', count: 17 },
+    { date: '2016/09/28', count: 19 },
+    { date: '2016/09/29', count: 3 },
+    { date: '2016/09/30', count: 8 },
+    { date: '2016/10/01', count: 12 },
+    { date: '2016/10/02', count: 7 },
+    { date: '2016/10/03', count: 9 },
+    { date: '2016/10/04', count: 14 },
+    { date: '2016/10/05', count: 6 },
+    { date: '2016/10/06', count: 10 },
+    { date: '2016/10/07', count: 13 },
+    { date: '2016/10/08', count: 4 },
+    { date: '2016/10/09', count: 11 },
+    { date: '2016/10/10', count: 3 },
+    { date: '2016/10/11', count: 16 },
+    { date: '2016/10/12', count: 5 },
+    { date: '2016/10/13', count: 18 },
+    { date: '2016/10/14', count: 2 },
+    { date: '2016/10/15', count: 20 },
+    { date: '2016/10/16', count: 1 },
+    { date: '2016/10/17', count: 17 },
+    { date: '2016/10/18', count: 19 },
+    { date: '2016/10/19', count: 3 },
+    { date: '2016/10/20', count: 8 },
+    { date: '2016/10/21', count: 12 },
+    { date: '2016/10/22', count: 7 },
+    { date: '2016/10/23', count: 9 },
+    { date: '2016/10/24', count: 14 },
+    { date: '2016/10/25', count: 6 },
+    { date: '2016/10/26', count: 10 },
+    { date: '2016/10/27', count: 13 },
+    { date: '2016/10/28', count: 4 },
+    { date: '2016/10/29', count: 11 },
+    { date: '2016/10/30', count: 3 },
+    { date: '2016/10/31', count: 16 },
+    { date: '2016/11/01', count: 5 },
+    { date: '2016/11/02', count: 18 },
+    { date: '2016/11/03', count: 2 },
+    { date: '2016/11/04', count: 20 },
+    { date: '2016/11/05', count: 1 },
+    { date: '2016/11/06', count: 17 },
+    { date: '2016/11/07', count: 19 },
+    { date: '2016/11/08', count: 3 },
+    { date: '2016/11/09', count: 8 },
+    { date: '2016/11/10', count: 12 },
+    { date: '2016/11/11', count: 7 },
+    { date: '2016/11/12', count: 9 },
+    { date: '2016/11/13', count: 14 },
+    { date: '2016/11/14', count: 6 },
+    { date: '2016/11/15', count: 10 },
+    { date: '2016/11/16', count: 13 },
+    { date: '2016/11/17', count: 4 },
+    { date: '2016/11/18', count: 11 },
+    { date: '2016/11/19', count: 3 },
+    { date: '2016/11/20', count: 16 },
+    { date: '2016/11/21', count: 5 },
+    { date: '2016/11/22', count: 18 },
+    { date: '2016/11/23', count: 2 },
+    { date: '2016/11/24', count: 20 },
+    { date: '2016/11/25', count: 1 },
+    { date: '2016/11/26', count: 17 },
+    { date: '2016/11/27', count: 19 },
+    { date: '2016/11/28', count: 3 },
+    { date: '2016/11/29', count: 8 },
+    { date: '2016/11/30', count: 12 },
+    { date: '2016/12/01', count: 7 },
+    { date: '2016/12/02', count: 9 },
+    { date: '2016/12/03', count: 14 },
+    { date: '2016/12/04', count: 6 },
+    { date: '2016/12/05', count: 10 },
+    { date: '2016/12/06', count: 13 },
+    { date: '2016/12/07', count: 4 },
+    { date: '2016/12/08', count: 11 },
+    { date: '2016/12/09', count: 3 },
+    { date: '2016/12/10', count: 16 },
+    { date: '2016/12/11', count: 5 },
+    { date: '2016/12/12', count: 18 },
+    { date: '2016/12/13', count: 2 },
+    { date: '2016/12/14', count: 20 },
+    { date: '

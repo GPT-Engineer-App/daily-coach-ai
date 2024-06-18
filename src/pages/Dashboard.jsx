@@ -89,27 +89,33 @@ const Dashboard = () => {
         <Box>
           <Text fontSize="lg" mb={2}>Contribution Activity</Text>
           <Box bg="gray.100" p={4} borderRadius="md">
-            <PolarArea data={data} options={options} />
-          </Box>
-        </Box>
-        <Box>
-          <Text fontSize="lg" mb={2}>Voice Clip Streak</Text>
-          <Box bg="gray.100" p={4} borderRadius="md">
-            <HeatMap
-              value={[
-                { date: '2023-01-01', count: 2 },
-                { date: '2023-01-02', count: 1 },
-                { date: '2023-01-03', count: 4 },
-                { date: '2023-01-04', count: 3 },
-                { date: '2023-01-05', count: 5 },
-                // Add more mock data as needed
-              ]}
-              width={800}
-              rectSize={20}
-              legendCellSize={0}
-              startDate={new Date('2023/01/01')}
-              endDate={new Date('2023/12/31')}
-            />
+            <HStack spacing={4}>
+              <Box flex="1">
+                <PolarArea data={data} options={options} />
+              </Box>
+              <Box flex="1">
+                <HeatMap
+                  value={[
+                    { date: '2023-01-01', count: 2 },
+                    { date: '2023-01-02', count: 1 },
+                    { date: '2023-01-03', count: 4 },
+                    { date: '2023-01-04', count: 3 },
+                    { date: '2023-01-05', count: 5 },
+                    { date: '2023-01-06', count: 2 },
+                    { date: '2023-01-07', count: 1 },
+                    { date: '2023-01-08', count: 4 },
+                    { date: '2023-01-09', count: 3 },
+                    { date: '2023-01-10', count: 5 },
+                    // Add more mock data as needed
+                  ]}
+                  width={400}
+                  rectSize={20}
+                  legendCellSize={0}
+                  startDate={new Date('2023/01/01')}
+                  endDate={new Date('2023/12/31')}
+                />
+              </Box>
+            </HStack>
           </Box>
         </Box>
         <Box>

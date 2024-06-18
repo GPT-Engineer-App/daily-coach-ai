@@ -67,6 +67,17 @@ const Dashboard = () => {
     },
   };
 
+  const heatmapData = [
+    { date: '2016/01/11', count: 2 },
+    { date: '2016/01/12', count: 20 },
+    { date: '2016/01/13', count: 10 },
+    ...[...Array(17)].map((_, idx) => ({ date: `2016/02/${idx + 10}`, count: idx, content: '' })),
+    { date: '2016/04/11', count: 2 },
+    { date: '2016/05/01', count: 5 },
+    { date: '2016/05/02', count: 5 },
+    { date: '2016/05/04', count: 11 },
+  ];
+
   return (
     <Box p={4}>
       <Heading as="h1" size="xl" mb={6} textAlign="center">Dashboard</Heading>
@@ -90,29 +101,14 @@ const Dashboard = () => {
           <Text fontSize="lg" mb={2}>Contribution Activity</Text>
           <Box bg="gray.100" p={4} borderRadius="md">
             <HStack spacing={4}>
-              <Box flex="1">
+              <Box flex="1" width="100%" height="400px">
                 <PolarArea data={data} options={options} />
               </Box>
-              <Box flex="1">
+              <Box flex="1" width="100%" height="400px">
                 <HeatMap
-                  value={[
-                    { date: '2023-01-01', count: 2 },
-                    { date: '2023-01-02', count: 1 },
-                    { date: '2023-01-03', count: 4 },
-                    { date: '2023-01-04', count: 3 },
-                    { date: '2023-01-05', count: 5 },
-                    { date: '2023-01-06', count: 2 },
-                    { date: '2023-01-07', count: 1 },
-                    { date: '2023-01-08', count: 4 },
-                    { date: '2023-01-09', count: 3 },
-                    { date: '2023-01-10', count: 5 },
-                    // Add more mock data as needed
-                  ]}
-                  width={400}
-                  rectSize={20}
-                  legendCellSize={0}
-                  startDate={new Date('2023/01/01')}
-                  endDate={new Date('2023/12/31')}
+                  value={heatmapData}
+                  weekLabels={['', 'Mon', '', 'Wed', '', 'Fri', '']}
+                  startDate={new Date('2016/01/01')}
                 />
               </Box>
             </HStack>
